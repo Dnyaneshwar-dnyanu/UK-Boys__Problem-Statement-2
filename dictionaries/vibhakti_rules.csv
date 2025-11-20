@@ -1,0 +1,13 @@
+case_marker,meaning,word_example,how_to_add,result
+ಅಲ್ಲಿ,in/at,ಮನೆ,add_ಯ_then_ಅಲ್ಲಿ,ಮನೆಯಲ್ಲಿ
+ಒಳು,inside,ಮನೆ,add_ಯ_then_ಒಳು,ಮನೆಯಲ್ಲಿ
+ಆಗೆ,towards/for,ಮನೆ,add_directly,ಮನೆಆಗೆ
+ಅ,of,ರವಿ,add_ಯ_then_ಅ,ರವಿಯ
+ದೆಸೆಯಿಂದ,from direction,ಮನೆ,add_ಯ_then_ದೆಸೆಯಿಂದ,ಮನೆಯದೆಸೆಯಿಂದ
+ಗೆ,to,ಮನೆ,add_directly,ಮನೆಗೆ
+ಇಗೆ,to here,ಮನೆ,add_directly,ಮನೆಇಗೆ
+ಕ್ಕೆ,to,ಮಗು,add_ವ_then_ಕ್ಕೆ,ಮಗುವಿಗೆ
+ಆಕ್ಕೆ,to there,ಮನೆ,add_directly,ಮನೆಆಕ್ಕೆ
+ಇಂದ,from,ಮನೆ,add_ಯ_then_ಇಂದ,ಮನೆಯಿಂದ
+ಅನ್ನು,object,ಪುಸ್ತಕ,add_ವ_then_ಅನ್ನು,ಪುಸ್ತಕವನ್ನು
+ಉ,with/by,ಮಗು,add_ವ_then_ಉ,ಮಗುವು

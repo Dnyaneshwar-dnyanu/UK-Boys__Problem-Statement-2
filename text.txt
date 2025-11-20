@@ -1,0 +1,1036 @@
+convert this into if else logic
+
+last_vowel('ಅ','ಆ','ಇ','ಈ','ಉ','ಊ','ಋ','ಎ','ಏ','ಐ','ಒ','ಓ','ಔ') + first_letter_of_word contains ಕ, ತ, ಪ  => then that first letter converted to ಗ, ದ, ಬ respectively
+
+if last_vowel == ಅ / ಆ
+          first_vowel == ಅ / ಆ   then last letter should have ಆ vowel and combined with second word
+          first_vowel == ಇ/ಈ  then last letter should have ಈ vowel and combined with second word
+          first_vowel == ಉ/ಊ then last letter should have ಊ vowel and combined with second word
+          first_vowel == ಏ/ಐ then last letter should have ಐ vowel and combined with second word
+          first_vowel == ಓ/ಔ then last letter should have ಔ vowel and combined with second word
+
+if last_vowel == ಇ/ಈ  and first_vowel == ಇ/ಈ
+     then last letter should have ಈ vowel and combined with second word
+
+if last_vowel == ಉ/ಊ  and first_vowel == ಉ/ಊ
+     then last letter should have ಊ vowel and combined with second word
+
+if last_vowel == ಆ/ಇ/ಈ/ಎ/ಏ/ಐ/ಓ and first_vowel
+     then first_vowel is replaced with ಯ and combined
+
+if last_vowel == ಉ/ಊ/ಋ/ಓ/ಔ and first_vowel
+     then first_vowel is replaced with ವ and combined
+
+
+
+word1: ಸಖೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ಸಖೀ + ಓಷಠ → ['ಸಖಯೋಷಠ', 'ಸಖಯಯೋಷಠ'] | expected = ಸಖ್ಯೋಷಠ
+word1: ನದೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ನದೀ + ಓಷಠ → ['ನದಯಯೋಷಠ', 'ನದಯೋಷಠ'] | expected = ನದ್ಯೋಷಠ
+word1: ದ್ಯೌ | last vowel: ಔ
+word2: ಓಷಠ | first vowel: ಓ
+ದ್ಯೌ + ಓಷಠ → ['ದ್ಯೌವೋಷಠ'] | expected = ದ್ಯವೋಷಠ
+word1: ಗೋ | last vowel: ಓ
+word2: ಓಷಠ | first vowel: ಓ
+ಗೋ + ಓಷಠ → ['ಗೋಯೋಷಠ', 'ಗೋವೋಷಠ'] | expected = ಗವೋಷಠ
+word1: ನೌ | last vowel: ಔ
+word2: ಓಷಠ | first vowel: ಓ
+ನೌ + ಓಷಠ → ['ನೌವೋಷಠ'] | expected = ನಾವೋಷಠ
+word1: ಪ್ಲು | last vowel: ಉ
+word2: ಓಷಠ | first vowel: ಓ
+ಪ್ಲು + ಓಷಠ → ['ಪ್ಲವವೋಷಠ', 'ಪ್ಲವೋಷಠ'] | expected = ಪ್ಲವೋಷಠ
+word1: ಶ್ವ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಶ್ವ + ಓಷಠ → ['ಶ್ವೌಷಠ', 'ಶ್ವೋಷಠ'] | expected = ಶ್ವೋಷಠ
+word1: ಅಶ್ವ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಅಶ್ವ + ಓಷಠ → ['ಅಶ್ವೌಷಠ', 'ಅಶ್ವೋಷಠ'] | expected = ಅಶ್ವೋಷಠ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ರಾಜನ್ + ಓಷಠ → ['ರಾಜನೌಷಠ'] | expected = ರಾಜೋಷಠ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ರಾಜನ್ + ಈಶ → ['ರಾಜನೀಶ'] | expected = ರಾಜ್ಞೀಶ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ರಾಜನ್ + ಉಪದೇಶ → ['ರಾಜನೂಪದೇಶ'] | expected = ರಾಜ್ಞುಪದೇಶ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ರಾಜನ್ + ಏಕ → ['ರಾಜನೈಕ'] | expected = ರಾಜ್ಞೇಕ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ರಾಜನ್ + ಓಷಠ → ['ರಾಜನೌಷಠ'] | expected = ರಾಜ್ಞೋಷಠ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ವಚನ್ + ಈಶ → ['ವಚನೀಶ'] | expected = ವಚನೀಶ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ವಚನ್ + ಉಪದೇಶ → ['ವಚನೂಪದೇಶ'] | expected = ವಚನುಪದೇಶ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ವಚನ್ + ಏಕ → ['ವಚನೈಕ'] | expected = ವಚನೇಕ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ವಚನ್ + ಓಷಠ → ['ವಚನೌಷಠ'] | expected = ವಚನೋಷಠ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಯಜಮಾನ್ + ಈಶ → ['ಯಜಮಾನೀಶ'] | expected = ಯಜಮಾನೀಶ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಯಜಮಾನ್ + ಉಪದೇಶ → ['ಯಜಮಾನೂಪದೇಶ'] | expected = ಯಜಮಾನುಪದೇಶ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಯಜಮಾನ್ + ಏಕ → ['ಯಜಮಾನೈಕ'] | expected = ಯಜಮಾನೇಕ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಯಜಮಾನ್ + ಓಷಠ → ['ಯಜಮಾನೌಷಠ'] | expected = ಯಜಮಾನೋಷಠ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಆತ್ಮನ್ + ಈಶ → ['ಆತ್ಮನೀಶ'] | expected = ಆತ್ಮನೀಶ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಆತ್ಮನ್ + ಉಪದೇಶ → ['ಆತ್ಮನೂಪದೇಶ'] | expected = ಆತ್ಮನುಪದೇಶ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಆತ್ಮನ್ + ಏಕ → ['ಆತ್ಮನೈಕ'] | expected = ಆತ್ಮನೇಕ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಆತ್ಮನ್ + ಓಷಠ → ['ಆತ್ಮನೌಷಠ'] | expected = ಆತ್ಮನೋಷಠ
+word1: ದೇವ | last vowel: ಅ
+word2: ಅಸುರ | first vowel: ಅ
+ದೇವ + ಅಸುರ → ['ದೇವಾಸುರ'] | expected = ದೇವಾಸುರ
+word1: ರಾಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ರಾಮ + ಆಲಯ → ['ರಾಮಾಲಯ'] | expected = ರಾಮಾಲಯ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಆತ್ಮ | first vowel: ಆ
+ಮಹಾ + ಆತ್ಮ → ['ಮಹಾತ್ಮ', 'ಮಹಾಯಾತ್ಮ'] | expected = ಮಹಾತ್ಮ
+word1: ಪುಸ್ತಕ | last vowel: ಅ
+word2: ಇಲಾಖೆ | first vowel: ಇ
+ಪುಸ್ತಕ + ಇಲಾಖೆ → ['ಪುಸ್ತಕೀಲಾಖೆ'] | expected = ಪುಸ್ತಕೀಲಾಖೆ
+word1: ಜ್ಞಾನ | last vowel: ಅ
+word2: ಈಶ್ವರ | first vowel: ಈ
+ಜ್ಞಾನ + ಈಶ್ವರ → ['ಜ್ಞಾನೀಶ್ವರ'] | expected = ಜ್ಞಾನೇಶ್ವರ
+word1: ದೇವ | last vowel: ಅ
+word2: ಉಪಕಾರ | first vowel: ಉ
+ದೇವ + ಉಪಕಾರ → ['ದೇವೂಪಕಾರ'] | expected = ದೇವೂಪಕಾರ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಉದಯ | first vowel: ಉ
+ಮಹಾ + ಉದಯ → ['ಮಹಾಯುದಯ', 'ಮಹೂದಯ'] | expected = ಮಹೋದಯ
+word1: ಶಿವ | last vowel: ಅ
+word2: ಐಕ್ಯ | first vowel: ಐ
+ಶಿವ + ಐಕ್ಯ → ['ಶಿವೈಕ್ಯ'] | expected = ಶಿವೈಕ್ಯ
+word1: ರಾಜ | last vowel: ಅ
+word2: ಏಕತೆ | first vowel: ಏ
+ರಾಜ + ಏಕತೆ → ['ರಾಜೈಕತೆ'] | expected = ರಾಜೈಕತೆ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಐಕ್ಯ | first vowel: ಐ
+ಮಹಾ + ಐಕ್ಯ → ['ಮಹಾಯೈಕ್ಯ', 'ಮಹೈಕ್ಯ'] | expected = ಮಹೈಕ್ಯ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಏಕ | first vowel: ಏ
+ಮಹಾ + ಏಕ → ['ಮಹೈಕ', 'ಮಹಾಯೇಕ'] | expected = ಮಹೈಕ
+word1: ಗಣ | last vowel: ಅ
+word2: ಓಂಕಾರ | first vowel: ಓ
+ಗಣ + ಓಂಕಾರ → ['ಗಣೌಂಕಾರ'] | expected = ಗಣೌಂಕಾರ
+word1: ಸಿರಿ | last vowel: ಇ
+word2: ಇಲ್ಲೆ | first vowel: ಇ
+ಸಿರಿ + ಇಲ್ಲೆ → ['ಸಿರಯೀಲ್ಲೆ', 'ಸಿರಯಯಿಲ್ಲೆ'] | expected = ಸಿರೀಲ್ಲೆ
+word1: ಹಳಿ | last vowel: ಇ
+word2: ಇಲಾಖೆ | first vowel: ಇ
+ಹಳಿ + ಇಲಾಖೆ → ['ಹಳಯಯಿಲಾಖೆ', 'ಹಳಯೀಲಾಖೆ'] | expected = ಹಳೀಲಾಖೆ
+word1: ಗುರು | last vowel: ಉ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಗುರು + ಉಪದೇಶ → ['ಗುರವೂಪದೇಶ', 'ಗುರವವುಪದೇಶ'] | expected = ಗುರೂಪದೇಶ
+word1: ವೀರೂ | last vowel: ಊ
+word2: ಉತ್ತಮ | first vowel: ಉ
+ವೀರೂ + ಉತ್ತಮ → ['ವೀರವವುತ್ತಮ', 'ವೀರವೂತ್ತಮ'] | expected = ವೀರೂತ್ತಮ
+word1: ಮನೆ | last vowel: ಎ
+word2: ಅಂಗಳ | first vowel: ಅ
+ಮನೆ + ಅಂಗಳ → ['ಮನೆಯಂಗಳ'] | expected = ಮನೆಯಂಗಳ
+word1: ಮಾಲೇ | last vowel: ಏ
+word2: ಅಂಗಡಿ | first vowel: ಅ
+ಮಾಲೇ + ಅಂಗಡಿ → ['ಮಾಲೇಯಂಗಡಿ'] | expected = ಮಾಲೆಯಂಗಡি
+word1: ವಿದ್ಯಾರ್ಥಿ | last vowel: ಇ
+word2: ಅಲಮಾರು | first vowel: ಅ
+ವಿದ್ಯಾರ್ಥಿ + ಅಲಮಾರು → ['ವಿದ್ಯಾರ್ಥಯಯಲಮಾರು'] | expected = ವಿದ್ಯಾರ್ಥಿಯಲಮಾರು
+word1: ಕೀರ್ತಿ | last vowel: ಇ
+word2: ಅನುದಿನ | first vowel: ಅ
+ಕೀರ್ತಿ + ಅನುದಿನ → ['ಕೀರ್ತಯಯನುದಿನ'] | expected = ಕೀರ್ತಿಯನುದಿನ
+word1: ಗೈ | last vowel: ಐ
+word2: ಅಂಗುಲ | first vowel: ಅ
+ಗೈ + ಅಂಗುಲ → ['ಗೈಯಂಗುಲ'] | expected = ಗೈಯಂಗುಲ
+word1: ಗೋ | last vowel: ಓ
+word2: ಅಶ್ವ | first vowel: ಅ
+ಗೋ + ಅಶ್ವ → ['ಗೋಯಶ್ವ', 'ಗೋವಶ್ವ'] | expected = ಗೋಯಶ್ವ
+word1: ಗುರು | last vowel: ಉ
+word2: ಅಧ್ಯಯನ | first vowel: ಅ
+ಗುರು + ಅಧ್ಯಯನ → ['ಗುರವವಧ್ಯಯನ'] | expected = ಗುರುವಧ್ಯಯನ
+word1: ವೀರೂ | last vowel: ಊ
+word2: ಅಂಗಡಿ | first vowel: ಅ
+ವೀರೂ + ಅಂಗಡಿ → ['ವೀರವವಂಗಡಿ'] | expected = ವೀರುವಂಗಡಿ
+word1: ಕೃಪೆ | last vowel: ಎ
+word2: ಅನುಗ್ರಹ | first vowel: ಅ
+ಕೃಪೆ + ಅನುಗ್ರಹ → ['ಕೃಪೆಯನುಗ್ರಹ'] | expected = ಕೃಪೆಯನುಗ್ರಹ
+word1: ಕೌ | last vowel: ಔ
+word2: ಅಂಗಡಿ | first vowel: ಅ
+ಕೌ + ಅಂಗಡಿ → ['ಕೌವಂಗಡಿ'] | expected = ಕೌವಂಗಡಿ
+word1: ಗೋ | last vowel: ಓ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಗೋ + ಉಪದೇಶ → ['ಗೋವುಪದೇಶ', 'ಗೋಯುಪದೇಶ'] | expected = ಗೋವುಪದೇಶ
+word1: ಪುಸ್ತಕ | last vowel: ಅ
+word2: ಅಲಯ | first vowel: ಅ
+ಪುಸ್ತಕ + ಅಲಯ → ['ಪುಸ್ತಕಾಲಯ'] | expected = ಪುಸ್ತಗಲಯ
+word1: ಸಮಿತ | last vowel: ಅ
+word2: ಅಧ್ಯಕ್ಷ | first vowel: ಅ
+ಸಮಿತ + ಅಧ್ಯಕ್ಷ → ['ಸಮಿತಾಧ್ಯಕ್ಷ'] | expected = ಸಮಿದಧ್ಯಕ್ಷ
+word1: ತಪ | last vowel: ಅ
+word2: ಅನುಭವ | first vowel: ಅ
+ತಪ + ಅನುಭವ → ['ತಪಾನುಭವ'] | expected = ತಬನುಭವ
+word1: ಶಬ್ದಕ | last vowel: ಅ
+word2: ಇಲಾಖೆ | first vowel: ಇ
+ಶಬ್ದಕ + ಇಲಾಖೆ → ['ಶಬ್ದಕೀಲಾಖೆ'] | expected = ಶಬ್ದಗಿಲಾಖೆ
+word1: ಪರಮಾತ | last vowel: ಅ
+word2: ಇಲಾಖೆ | first vowel: ಇ
+ಪರಮಾತ + ಇಲಾಖೆ → ['ಪರಮಾತೀಲಾಖೆ'] | expected = ಪರಮಾದಿಲಾಖೆ
+word1: ಉಪ | last vowel: ಅ
+word2: ಉಪಯೋಗ | first vowel: ಉ
+ಉಪ + ಉಪಯೋಗ → ['ಉಪೂಪಯೋಗ'] | expected = ಉಬುಪಯೋಗ
+word1: ಕವಿ | last vowel: ಇ
+word2: ಅಲಯ | first vowel: ಅ
+ಕವಿ + ಅಲಯ → ['ಕವಯಯಲಯ'] | expected = ಕವಿಯಲಯ
+word1: ಗಂಗಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಗಂಗಾ + ಆಲಯ → ['ಗಂಗಾಯಾಲಯ', 'ಗಂಗಾಲಯ'] | expected = ಗಂಗಾಲಯ
+word1: ವಿದ್ಯಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ವಿದ್ಯಾ + ಆಲಯ → ['ವಿದ್ಯಾಲಯ', 'ವಿದ್ಯಾಯಾಲಯ'] | expected = ವಿದ್ಯಾಲಯ
+word1: ಸತ್ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ಸತ್ + ಅರ್ಥ → ['ಸದಾರ್ಥ'] | expected = ಸದರ್ಥ
+word1: ವಿದ್ಯುತ್ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ವಿದ್ಯುತ್ + ಅರ್ಥ → ['ವಿದ್ಯುದಾರ್ಥ'] | expected = ವಿದ್ಯುದರ್ಥ
+word1: ಜಗತ್ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ಜಗತ್ + ಅರ್ಥ → ['ಜಗದಾರ್ಥ'] | expected = ಜಗದರ್ಥ
+word1: ಸತ್ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ಸತ್ + ಅರ್ಥ → ['ಸದಾರ್ಥ'] | expected = ಸದರ್ಥ
+word1: ವಿದ್ಯಾ | last vowel: ಆ
+word2: ಅರ್ಥಿ | first vowel: ಅ
+ವಿದ್ಯಾ + ಅರ್ಥಿ → ['ವಿದ್ಯಾರ್ಥಿ', 'ವಿದ್ಯಾಯರ್ಥಿ'] | expected = ವಿದ್ಯಾರ್ಥಿ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಋಷಿ | first vowel: ಋ
+ಮಹಾ + ಋಷಿ → ['ಮಹಾಯೃಷಿ'] | expected = ಮಹರ್ಷಿ
+word1: ಗೋ | last vowel: ಓ
+word2: ಇಂದ್ರ | first vowel: ಇ
+ಗೋ + ಇಂದ್ರ → ['ಗೋಯಿಂದ್ರ', 'ಗೋವಿಂದ್ರ'] | expected = ಗೋಯಿಂದ್ರ
+word1: ಸು | last vowel: ಉ
+word2: ಉಕ್ತ | first vowel: ಉ
+ಸು + ಉಕ್ತ → ['ಸವವುಕ್ತ', 'ಸವೂಕ್ತ'] | expected = ಸೂಕ್ತ
+word1: ದುಃ | last vowel: ಅ
+word2: ಖ | first vowel: ಅ
+ದುಃ + ಖ → ['ದುಃಾ'] | expected = ದುಃಖ
+word1: ಸು | last vowel: ಉ
+word2: ಖ | first vowel: ಅ
+ಸು + ಖ → ['ಸವವಖ'] | expected = ಸುಖ
+word1: ಚಂದ್ರ | last vowel: ಅ
+word2: ಉದಯ | first vowel: ಉ
+ಚಂದ್ರ + ಉದಯ → ['ಚಂದ್ರೂದಯ'] | expected = ಚಂದ್ರೋದಯ
+word1: ವನ | last vowel: ಅ
+word2: ಓಷಧಿ | first vowel: ಓ
+ವನ + ಓಷಧಿ → ['ವನೌಷಧಿ'] | expected = ವನೌಷಧಿ
+word1: ಪ್ರತಿ | last vowel: ಇ
+word2: ಉತ್ತರ | first vowel: ಉ
+ಪ್ರತಿ + ಉತ್ತರ → ['ಪ್ರತಯಯುತ್ತರ'] | expected = ಪ್ರತ್ಯುತ್ತರ
+word1: ಅನು | last vowel: ಉ
+word2: ಇಷ್ಟ | first vowel: ಇ
+ಅನು + ಇಷ್ಟ → ['ಅನವವಿಷ್ಟ'] | expected = ಅನ್ವಿಷ್ಟ
+word1: ಸಮ್ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ಸಮ್ + ಅರ್ಥ → ['ಸಮಾರ್ಥ'] | expected = ಸಮರ್ಥ
+word1: ಸಮ್ | last vowel: ಅ
+word2: ಆಚಾರ | first vowel: ಆ
+ಸಮ್ + ಆಚಾರ → ['ಸಮಾಚಾರ'] | expected = ಸಮಾಚಾರ
+word1: ಸಮ್ | last vowel: ಅ
+word2: ಉದ್ಧಾರ | first vowel: ಉ
+ಸಮ್ + ಉದ್ಧಾರ → ['ಸಮೂದ್ಧಾರ'] | expected = ಸಮುದ್ಧಾರ
+word1: ಸಮ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಸಮ್ + ಓಷಠ → ['ಸಮೌಷಠ'] | expected = ಸಮೋಷಠ
+word1: ಪರಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ಪರಿ + ಅಯನ → ['ಪರಯಯಯನ'] | expected = ಪರ್ಯಯನ
+word1: ಪರಿ | last vowel: ಇ
+word2: ಆವರಣ | first vowel: ಆ
+ಪರಿ + ಆವರಣ → ['ಪರಯಯಾವರಣ'] | expected = ಪರ್ಯಾವರಣ
+word1: ಪರಿ | last vowel: ಇ
+word2: ಉಪಾಸನೆ | first vowel: ಉ
+ಪರಿ + ಉಪಾಸನೆ → ['ಪರಯಯುಪಾಸನೆ'] | expected = ಪರ್ಯುಪಾಸನೆ
+word1: ಪ್ರತಿ | last vowel: ಇ
+word2: ಅಕ್ಷ | first vowel: ಅ
+ಪ್ರತಿ + ಅಕ್ಷ → ['ಪ್ರತಯಯಕ್ಷ'] | expected = ಪ್ರತ್ಯಕ್ಷ
+word1: ಪ್ರತಿ | last vowel: ಇ
+word2: ಉದ್ಧಾರ | first vowel: ಉ
+ಪ್ರತಿ + ಉದ್ಧಾರ → ['ಪ್ರತಯಯುದ್ಧಾರ'] | expected = ಪ್ರತ್ಯುದ್ಧಾರ
+word1: ಅಧಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ಅಧಿ + ಅಯನ → ['ಅಧಯಯಯನ'] | expected = ಅಧ್ಯಯನ
+word1: ಅಧಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ಅಧಿ + ಆಪ → ['ಅಧಯಯಾಪ'] | expected = ಅಧ್ಯಾಪ
+word1: ಅಧಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ಅಧಿ + ಈಶ → ['ಅಧಯಯೀಶ', 'ಅಧಯೀಶ'] | expected = ಅಧೀಶ
+word1: ಅಧಿ | last vowel: ಇ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅಧಿ + ಉಪದೇಶ → ['ಅಧಯಯುಪದೇಶ'] | expected = ಅಧ್ಯುಪದೇಶ
+word1: ಅನು | last vowel: ಉ
+word2: ಅಯನ | first vowel: ಅ
+ಅನು + ಅಯನ → ['ಅನವವಯನ'] | expected = ಅನ್ವಯನ
+word1: ಅನು | last vowel: ಉ
+word2: ಆಜ್ಞೆ | first vowel: ಆ
+ಅನು + ಆಜ್ಞೆ → ['ಅನವವಾಜ್ಞೆ'] | expected = ಅನ್ವಾಜ್ಞೆ
+word1: ಅನು | last vowel: ಉ
+word2: ಇಷ್ಟ | first vowel: ಇ
+ಅನು + ಇಷ್ಟ → ['ಅನವವಿಷ್ಟ'] | expected = ಅನ್ವಿಷ್ಟ
+word1: ಅಪಿ | last vowel: ಇ
+word2: ಅಕ್ಷ | first vowel: ಅ
+ಅಪಿ + ಅಕ್ಷ → ['ಅಪಯಯಕ್ಷ'] | expected = ಅಪ್ಯಕ್ಷ
+word1: ಅಪಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ಅಪಿ + ಆಪ → ['ಅಪಯಯಾಪ'] | expected = ಅಪ್ಯಾಪ
+word1: ಅಪಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ಅಪಿ + ಈಶ → ['ಅಪಯಯೀಶ', 'ಅಪಯೀಶ'] | expected = ಅಪೀಶ
+word1: ಅಭಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ಅಭಿ + ಅಯನ → ['ಅಭಯಯಯನ'] | expected = ಅಭ್ಯಯನ
+word1: ಅಭಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ಅಭಿ + ಆಪ → ['ಅಭಯಯಾಪ'] | expected = ಅಭ್ಯಾಪ
+word1: ಅಭಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ಅಭಿ + ಈಶ → ['ಅಭಯಯೀಶ', 'ಅಭಯೀಶ'] | expected = ಅಭೀಶ
+word1: ಉಪ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಉಪ + ಅಯನ → ['ಉಪಾಯನ'] | expected = ಉಪಯನ
+word1: ಉಪ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಉಪ + ಆಪ → ['ಉಪಾಪ'] | expected = ಉಪಾಪ
+word1: ಉಪ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಉಪ + ಈಶ → ['ಉಪೀಶ'] | expected = ಉಪೇಶ
+word1: ಉಪ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಉಪ + ಉಪದೇಶ → ['ಉಪೂಪದೇಶ'] | expected = ಉಪೋಪದೇಶ
+word1: ಉಪ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಉಪ + ಏಕ → ['ಉಪೈಕ'] | expected = ಉಪೇಕ
+word1: ಉಪ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಉಪ + ಓಷಠ → ['ಉಪೌಷಠ'] | expected = ಉಪೋಷಠ
+word1: ನಿರ್ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ನಿರ್ + ಅಯನ → ['ನಿರ್ಾಯನ'] | expected = ನಿರಯನ
+word1: ನಿರ್ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ನಿರ್ + ಆಪ → ['ನಿರ್ಾಪ'] | expected = ನಿರಾಪ
+word1: ನಿರ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ನಿರ್ + ಈಶ → ['ನಿರ್ೀಶ'] | expected = ನಿರೀಶ
+word1: ನಿರ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ನಿರ್ + ಉಪದೇಶ → ['ನಿರ್ೂಪದೇಶ'] | expected = ನಿರುಪದೇಶ
+word1: ದುರ್ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ದುರ್ + ಅಯನ → ['ದುರ್ಾಯನ'] | expected = ದುರಯನ
+word1: ದುರ್ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ದುರ್ + ಆಪ → ['ದುರ್ಾಪ'] | expected = ದುರಾಪ
+word1: ದುರ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ದುರ್ + ಈಶ → ['ದುರ್ೀಶ'] | expected = ದುರೀಶ
+word1: ದುರ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ದುರ್ + ಉಪದೇಶ → ['ದುರ್ೂಪದೇಶ'] | expected = ದುರುಪದೇಶ
+word1: ಸುರ್ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಸುರ್ + ಅಯನ → ['ಸುರ್ಾಯನ'] | expected = ಸುರಯನ
+word1: ಸುರ್ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಸುರ್ + ಆಪ → ['ಸುರ್ಾಪ'] | expected = ಸುರಾಪ
+word1: ಸುರ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಸುರ್ + ಈಶ → ['ಸುರ್ೀಶ'] | expected = ಸುರೀಶ
+word1: ಸುರ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಸುರ್ + ಉಪದೇಶ → ['ಸುರ್ೂಪದೇಶ'] | expected = ಸುರುಪದೇಶ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಪ್ರ + ಅಯನ → ['ಪ್ರಾಯನ'] | expected = ಪ್ರಯನ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಪ್ರ + ಆಪ → ['ಪ್ರಾಪ'] | expected = ಪ್ರಾಪ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಪ್ರ + ಈಶ → ['ಪ್ರೀಶ'] | expected = ಪ್ರೇಶ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಪ್ರ + ಉಪದೇಶ → ['ಪ್ರೂಪದೇಶ'] | expected = ಪ್ರೋಪದೇಶ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಪ್ರ + ಏಕ → ['ಪ್ರೈಕ'] | expected = ಪ್ರೇಕ
+word1: ಪ್ರ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಪ್ರ + ಓಷಠ → ['ಪ್ರೌಷಠ'] | expected = ಪ್ರೋಷಠ
+word1: ಆ | last vowel: ಆ
+word2: ಅಯನ | first vowel: ಅ
+ಆ + ಅಯನ → ['ಆಅಯನ', 'ಆಾಯನ', 'ಆಯಯನ'] | expected = ಆಯನ
+word1: ಆ | last vowel: ಆ
+word2: ಆಪ | first vowel: ಆ
+ಆ + ಆಪ → ['ಆಆಪ', 'ಆಯಾಪ', 'ಆಾಪ'] | expected = ಆಪ
+word1: ಆ | last vowel: ಆ
+word2: ಈಶ | first vowel: ಈ
+ಆ + ಈಶ → ['ಆಈಶ', 'ಆಯೀಶ', 'ಆೀಶ'] | expected = ಈಶ
+word1: ಆ | last vowel: ಆ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಆ + ಉಪದೇಶ → ['ಆಯುಪದೇಶ', 'ಆಉಪದೇಶ', 'ಆೂಪದೇಶ'] | expected = ಓಪದೇಶ
+word1: ಆ | last vowel: ಆ
+word2: ಏಕ | first vowel: ಏ
+ಆ + ಏಕ → ['ಆೈಕ', 'ಆಯೇಕ', 'ಆಏಕ'] | expected = ಏಕ
+word1: ಆ | last vowel: ಆ
+word2: ಓಷಠ | first vowel: ಓ
+ಆ + ಓಷಠ → ['ಆಓಷಠ', 'ಆೌಷಠ', 'ಆಯೋಷಠ'] | expected = ಓಷಠ
+word1: ಉದ್ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಉದ್ + ಅಯನ → ['ಉದ್ಾಯನ'] | expected = ಉದಯನ
+word1: ಉದ್ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಉದ್ + ಆಪ → ['ಉದ್ಾಪ'] | expected = ಉದಾಪ
+word1: ಉದ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಉದ್ + ಈಶ → ['ಉದ್ೀಶ'] | expected = ಉದೀಶ
+word1: ಉದ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಉದ್ + ಉಪದೇಶ → ['ಉದ್ೂಪದೇಶ'] | expected = ಉದುಪದೇಶ
+word1: ಅವ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಅವ + ಅಯನ → ['ಅವಾಯನ'] | expected = ಅವಯನ
+word1: ಅವ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಅವ + ಆಪ → ['ಅವಾಪ'] | expected = ಅವಾಪ
+word1: ಅವ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಅವ + ಈಶ → ['ಅವೀಶ'] | expected = ಅವೇಶ
+word1: ಅವ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅವ + ಉಪದೇಶ → ['ಅವೂಪದೇಶ'] | expected = ಅವೋಪದೇಶ
+word1: ಅವ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಅವ + ಏಕ → ['ಅವೈಕ'] | expected = ಅವೇಕ
+word1: ಅವ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಅವ + ಓಷಠ → ['ಅವೋಷಠ', 'ಅವೌಷಠ'] | expected = ಅವೋಷಠ
+word1: ನಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ನಿ + ಅಯನ → ['ನಯಯಯನ'] | expected = ನಿಯನ
+word1: ನಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ನಿ + ಆಪ → ['ನಯಯಾಪ'] | expected = ನಿಯಾಪ
+word1: ನಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ನಿ + ಈಶ → ['ನಯಯೀಶ', 'ನಯೀಶ'] | expected = ನಿಯೇಶ
+word1: ನಿ | last vowel: ಇ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ನಿ + ಉಪದೇಶ → ['ನಯಯುಪದೇಶ'] | expected = ನಿಯುಪದೇಶ
+word1: ನಿ | last vowel: ಇ
+word2: ಏಕ | first vowel: ಏ
+ನಿ + ಏಕ → ['ನಯಯೇಕ'] | expected = ನಿಯೇಕ
+word1: ನಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ನಿ + ಓಷಠ → ['ನಯೋಷಠ', 'ನಯಯೋಷಠ'] | expected = ನಿಯೋಷಠ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ಅತಿ + ಅಯನ → ['ಅತಯಯಯನ'] | expected = ಅತಿಯನ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ಅತಿ + ಆಪ → ['ಅತಯಯಾಪ'] | expected = ಅತಿಯಾಪ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ಅತಿ + ಈಶ → ['ಅತಯೀಶ', 'ಅತಯಯೀಶ'] | expected = ಅತೀಶ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅತಿ + ಉಪದೇಶ → ['ಅತಯಯುಪದೇಶ'] | expected = ಅತೀಪದೇಶ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಏಕ | first vowel: ಏ
+ಅತಿ + ಏಕ → ['ಅತಯಯೇಕ'] | expected = ಅತೀಕ
+word1: ಅತಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ಅತಿ + ಓಷಠ → ['ಅತಯೋಷಠ', 'ಅತಯಯೋಷಠ'] | expected = ಅತೀಷಠ
+word1: ಸು | last vowel: ಉ
+word2: ಅಯನ | first vowel: ಅ
+ಸು + ಅಯನ → ['ಸವವಯನ'] | expected = ಸ್ವಯನ
+word1: ಸು | last vowel: ಉ
+word2: ಆಪ | first vowel: ಆ
+ಸು + ಆಪ → ['ಸವವಾಪ'] | expected = ಸ್ವಾಪ
+word1: ಸು | last vowel: ಉ
+word2: ಈಶ | first vowel: ಈ
+ಸು + ಈಶ → ['ಸವವೀಶ'] | expected = ಸ್ವೀಶ
+word1: ಸು | last vowel: ಉ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಸು + ಉಪದೇಶ → ['ಸವೂಪದೇಶ', 'ಸವವುಪದೇಶ'] | expected = ಸ್ವುಪದೇಶ
+word1: ದುಃ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ದುಃ + ಅಯನ → ['ದುಃಾಯನ'] | expected = ದುರಯನ
+word1: ದುಃ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ದುಃ + ಆಪ → ['ದುಃಾಪ'] | expected = ದುರಾಪ
+word1: ದುಃ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ದುಃ + ಈಶ → ['ದುಃೀಶ'] | expected = ದುರೀಶ
+word1: ದುಃ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ದುಃ + ಉಪದೇಶ → ['ದುಃೂಪದೇಶ'] | expected = ದುರುಪದೇಶ
+word1: ವಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ವಿ + ಅಯನ → ['ವಯಯಯನ'] | expected = ವಿಯನ
+word1: ವಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ವಿ + ಆಪ → ['ವಯಯಾಪ'] | expected = ವಿಯಾಪ
+word1: ವಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ವಿ + ಈಶ → ['ವಯೀಶ', 'ವಯಯೀಶ'] | expected = ವಿಯೇಶ
+word1: ವಿ | last vowel: ಇ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ವಿ + ಉಪದೇಶ → ['ವಯಯುಪದೇಶ'] | expected = ವಿಯುಪದೇಶ
+word1: ವಿ | last vowel: ಇ
+word2: ಏಕ | first vowel: ಏ
+ವಿ + ಏಕ → ['ವಯಯೇಕ'] | expected = ವಿಯೇಕ
+word1: ವಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ವಿ + ಓಷಠ → ['ವಯೋಷಠ', 'ವಯಯೋಷಠ'] | expected = ವಿಯೋಷಠ
+word1: ಅ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಅ + ಅಯನ → ['ಅಅಯನ', 'ಅಾಯನ'] | expected = ಅಯನ
+word1: ಅ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಅ + ಆಪ → ['ಅಾಪ', 'ಅಆಪ'] | expected = ಆಪ
+word1: ಅ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಅ + ಈಶ → ['ಅೀಶ', 'ಅಈಶ'] | expected = ಈಶ
+word1: ಅ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅ + ಉಪದೇಶ → ['ಅಉಪದೇಶ', 'ಅೂಪದೇಶ'] | expected = ಓಪದೇಶ
+word1: ಅ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಅ + ಏಕ → ['ಅಏಕ', 'ಅೈಕ'] | expected = ಏಕ
+word1: ಅ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಅ + ಓಷಠ → ['ಅೌಷಠ', 'ಅಓಷಠ'] | expected = ಓಷಠ
+word1: ಇತಿ | last vowel: ಇ
+word2: ಅಯನ | first vowel: ಅ
+ಇತಿ + ಅಯನ → ['ಇತಯಯಯನ'] | expected = ಇತ್ಯಯನ
+word1: ಇತಿ | last vowel: ಇ
+word2: ಆಪ | first vowel: ಆ
+ಇತಿ + ಆಪ → ['ಇತಯಯಾಪ'] | expected = ಇತ್ಯಾಪ
+word1: ಇತಿ | last vowel: ಇ
+word2: ಈಶ | first vowel: ಈ
+ಇತಿ + ಈಶ → ['ಇತಯೀಶ', 'ಇತಯಯೀಶ'] | expected = ಇತೀಶ
+word1: ಇತಿ | last vowel: ಇ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಇತಿ + ಉಪದೇಶ → ['ಇತಯಯುಪದೇಶ'] | expected = ಇತ್ಯುಪದೇಶ
+word1: ಅಸ್ತ್ | last vowel: ಅ
+word2: ಅಯನ | first vowel: ಅ
+ಅಸ್ತ್ + ಅಯನ → ['ಅಸ್ದಾಯನ'] | expected = ಅಸ್ತಯನ
+word1: ಅಸ್ತ್ | last vowel: ಅ
+word2: ಆಪ | first vowel: ಆ
+ಅಸ್ತ್ + ಆಪ → ['ಅಸ್ದಾಪ'] | expected = ಅಸ್ತಾಪ
+word1: ಅಸ್ತ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಅಸ್ತ್ + ಈಶ → ['ಅಸ್ದೀಶ'] | expected = ಅಸ್ತೀಶ
+word1: ಅಸ್ತ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅಸ್ತ್ + ಉಪದೇಶ → ['ಅಸ್ದೂಪದೇಶ'] | expected = ಅಸ್ತುಪದೇಶ
+word1: ಜಗತ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಜಗತ್ + ಈಶ → ['ಜಗದೀಶ'] | expected = ಜಗದೀಶ
+word1: ಜಗತ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಜಗತ್ + ಉಪದೇಶ → ['ಜಗದೂಪದೇಶ'] | expected = ಜಗದುಪದೇಶ
+word1: ವಾಕ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ವಾಕ್ + ಈಶ → ['ವಾಗೀಶ'] | expected = ವಾಗೀಶ
+word1: ವಾಕ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ವಾಕ್ + ಉಪದೇಶ → ['ವಾಗೂಪದೇಶ'] | expected = ವಾಗುಪದೇಶ
+word1: ಛತ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಛತ್ + ಈಶ → ['ಛದೀಶ'] | expected = ಛದೀಶ
+word1: ಛತ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಛತ್ + ಉಪದೇಶ → ['ಛದೂಪದೇಶ'] | expected = ಛದುಪದೇಶ
+word1: ಅಜ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಅಜ್ + ಈಶ → ['ಅಜ್ೀಶ'] | expected = ಅಜೀಶ
+word1: ಅಜ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಅಜ್ + ಉಪದೇಶ → ['ಅಜ್ೂಪದೇಶ'] | expected = ಅಜುಪದೇಶ
+word1: ವಹ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ವಹ್ + ಈಶ → ['ವಹ್ೀಶ'] | expected = ವಹೀಶ
+word1: ವಹ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ವಹ್ + ಉಪದೇಶ → ['ವಹ್ೂಪದೇಶ'] | expected = ವಹುಪದೇಶ
+word1: ದಿವ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ದಿವ್ + ಈಶ → ['ದಿವ್ೀಶ'] | expected = ದಿವೀಶ
+word1: ದಿವ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ದಿವ್ + ಉಪದೇಶ → ['ದಿವ್ೂಪದೇಶ'] | expected = ದಿವುಪದೇಶ
+word1: ಸರಸ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಸರಸ್ + ಈಶ → ['ಸರಸೀಶ'] | expected = ಸರಸೀಶ
+word1: ಸರಸ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಸರಸ್ + ಉಪದೇಶ → ['ಸರಸೂಪದೇಶ'] | expected = ಸರಸುಪದೇಶ
+word1: ಮನಸ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಮನಸ್ + ಈಶ → ['ಮನಸೀಶ'] | expected = ಮನಸೀಶ
+word1: ಮನಸ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಮನಸ್ + ಉಪದೇಶ → ['ಮನಸೂಪದೇಶ'] | expected = ಮನಸುಪದೇಶ
+word1: ತಪಸ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ತಪಸ್ + ಈಶ → ['ತಪಸೀಶ'] | expected = ತಪಸೀಶ
+word1: ತಪಸ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ತಪಸ್ + ಉಪದೇಶ → ['ತಪಸೂಪದೇಶ'] | expected = ತಪಸುಪದೇಶ
+word1: ಓಷಠ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಓಷಠ + ಈಶ → ['ಓಷಠೀಶ'] | expected = ಓಷಠೀಶ
+word1: ಓಷಠ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಓಷಠ + ಉಪದೇಶ → ['ಓಷಠೂಪದೇಶ'] | expected = ಓಷಠೋಪದೇಶ
+word1: ಓಷಠ | last vowel: ಅ
+word2: ಏಕ | first vowel: ಏ
+ಓಷಠ + ಏಕ → ['ಓಷಠೈಕ'] | expected = ಓಷಠೇಕ
+word1: ಓಷಠ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಓಷಠ + ಓಷಠ → ['ಓಷಠೌಷಠ'] | expected = ಓಷಠೋಷಠ
+word1: ಕವಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ಕವಿ + ಓಷಠ → ['ಕವಯೋಷಠ', 'ಕವಯಯೋಷಠ'] | expected = ಕವ್ಯೋಷಠ
+word1: ಮಹೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ಮಹೀ + ಓಷಠ → ['ಮಹಯೋಷಠ', 'ಮಹಯಯೋಷಠ'] | expected = ಮಹ್ಯೋಷಠ
+word1: ಗಿರಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ಗಿರಿ + ಓಷಠ → ['ಗಿರಯೋಷಠ', 'ಗಿರಯಯೋಷಠ'] | expected = ಗಿರ್ಯೋಷಠ
+word1: ವಾರಿ | last vowel: ಇ
+word2: ಓಷಠ | first vowel: ಓ
+ವಾರಿ + ಓಷಠ → ['ವಾರಯಯೋಷಠ', 'ವಾರಯೋಷಠ'] | expected = ವಾರ್ಯೋಷಠ
+word1: ಧಾತ್ರೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ಧಾತ್ರೀ + ಓಷಠ → ['ಧಾತ್ರಯೋಷಠ', 'ಧಾತ್ರಯಯೋಷಠ'] | expected = ಧಾತ್ರ್ಯೋಷಠ
+word1: ಸಖೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ಸಖೀ + ಓಷಠ → ['ಸಖಯೋಷಠ', 'ಸಖಯಯೋಷಠ'] | expected = ಸಖ್ಯೋಷಠ
+word1: ನದೀ | last vowel: ಈ
+word2: ಓಷಠ | first vowel: ಓ
+ನದೀ + ಓಷಠ → ['ನದಯಯೋಷಠ', 'ನದಯೋಷಠ'] | expected = ನದ್ಯೋಷಠ
+word1: ದ್ಯೌ | last vowel: ಔ
+word2: ಓಷಠ | first vowel: ಓ
+ದ್ಯೌ + ಓಷಠ → ['ದ್ಯೌವೋಷಠ'] | expected = ದ್ಯವೋಷಠ
+word1: ಗೋ | last vowel: ಓ
+word2: ಓಷಠ | first vowel: ಓ
+ಗೋ + ಓಷಠ → ['ಗೋಯೋಷಠ', 'ಗೋವೋಷಠ'] | expected = ಗವೋಷಠ
+word1: ನೌ | last vowel: ಔ
+word2: ಓಷಠ | first vowel: ಓ
+ನೌ + ಓಷಠ → ['ನೌವೋಷಠ'] | expected = ನಾವೋಷಠ
+word1: ಪ್ಲು | last vowel: ಉ
+word2: ಓಷಠ | first vowel: ಓ
+ಪ್ಲು + ಓಷಠ → ['ಪ್ಲವವೋಷಠ', 'ಪ್ಲವೋಷಠ'] | expected = ಪ್ಲವೋಷಠ
+word1: ಶ್ವ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಶ್ವ + ಓಷಠ → ['ಶ್ವೌಷಠ', 'ಶ್ವೋಷಠ'] | expected = ಶ್ವೋಷಠ
+word1: ಅಶ್ವ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಅಶ್ವ + ಓಷಠ → ['ಅಶ್ವೌಷಠ', 'ಅಶ್ವೋಷಠ'] | expected = ಅಶ್ವೋಷಠ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ರಾಜನ್ + ಓಷಠ → ['ರಾಜನೌಷಠ'] | expected = ರಾಜೋಷಠ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ರಾಜನ್ + ಈಶ → ['ರಾಜನೀಶ'] | expected = ರಾಜನೀಶ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ರಾಜನ್ + ಉಪದೇಶ → ['ರಾಜನೂಪದೇಶ'] | expected = ರಾಜನುಪದೇಶ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ವಚನ್ + ಈಶ → ['ವಚನೀಶ'] | expected = ವಚನೀಶ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ವಚನ್ + ಉಪದೇಶ → ['ವಚನೂಪದೇಶ'] | expected = ವಚನುಪದೇಶ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಯಜಮಾನ್ + ಈಶ → ['ಯಜಮಾನೀಶ'] | expected = ಯಜಮಾನೀಶ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಯಜಮಾನ್ + ಉಪದೇಶ → ['ಯಜಮಾನೂಪದೇಶ'] | expected = ಯಜಮಾನುಪದೇಶ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಈಶ | first vowel: ಈ
+ಆತ್ಮನ್ + ಈಶ → ['ಆತ್ಮನೀಶ'] | expected = ಆತ್ಮನೀಶ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಆತ್ಮನ್ + ಉಪದೇಶ → ['ಆತ್ಮನೂಪದೇಶ'] | expected = ಆತ್ಮನುಪದೇಶ
+word1: ಕಾವ್ಯ | last vowel: ಅ
+word2: ಅರ್ಥ | first vowel: ಅ
+ಕಾವ್ಯ + ಅರ್ಥ → ['ಕಾವ್ಯಾರ್ಥ'] | expected = ಕಾವ್ಯಾರ್ಥ
+word1: ಸಂಸ್ಕೃತ | last vowel: ಅ
+word2: ಅಧ್ಯಯನ | first vowel: ಅ
+ಸಂಸ್ಕೃತ + ಅಧ್ಯಯನ → ['ಸಂಸ್ಕೃತಾಧ್ಯಯನ'] | expected = ಸಂಸ್ಕೃತಾಧ್ಯಯನ
+word1: ವಿದ್ಯಾರ್ಥಿ | last vowel: ಇ
+word2: ಇನ್ | first vowel: ಇ
+ವಿದ್ಯಾರ್ಥಿ + ಇನ್ → ['ವಿದ್ಯಾರ್ಥಯೀನ್', 'ವಿದ್ಯಾರ್ಥಯಯಿನ್'] | expected = ವಿದ್ಯಾರ್ಥೀನ್
+word1: ಶಿಕ್ಷಕ | last vowel: ಅ
+word2: ಉಪದೇಶ | first vowel: ಉ
+ಶಿಕ್ಷಕ + ಉಪದೇಶ → ['ಶಿಕ್ಷಕೂಪದೇಶ'] | expected = ಶಿಕ್ಷಗುಪದೇಶ
+word1: ಪ್ರಭು | last vowel: ಉ
+word2: ಉತ್ತರ | first vowel: ಉ
+ಪ್ರಭು + ಉತ್ತರ → ['ಪ್ರಭವೂತ್ತರ', 'ಪ್ರಭವವುತ್ತರ'] | expected = ಪ್ರಭೂತ್ತರ
+word1: ಮಿತ್ರ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಮಿತ್ರ + ಓಷಠ → ['ಮಿತ್ರೌಷಠ'] | expected = ಮಿತ್ರೌಷಠ
+word1: ಸ್ನೇಹ | last vowel: ಅ
+word2: ಓಷಠ | first vowel: ಓ
+ಸ್ನೇಹ + ಓಷಠ → ['ಸ್ನೇಹೌಷಠ'] | expected = ಸ್ನೇಹೌಷಠ
+word1: ಗ್ರಂಥ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಗ್ರಂಥ + ಆಲಯ → ['ಗ್ರಂಥಾಲಯ'] | expected = ಗ್ರಂಥಾಲಯ
+word1: ಪುಸ್ತಕ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪುಸ್ತಕ + ಆಲಯ → ['ಪುಸ್ತಕಾಲಯ'] | expected = ಪುಸ್ತಕಾಲಯ
+word1: ವಿದ್ಯಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ವಿದ್ಯಾ + ಆಲಯ → ['ವಿದ್ಯಾಲಯ', 'ವಿದ್ಯಾಯಾಲಯ'] | expected = ವಿದ್ಯಾಲಯ
+word1: ಮಹಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಹಾ + ಆಲಯ → ['ಮಹಾಯಾಲಯ', 'ಮಹಾಲಯ'] | expected = ಮಹಾಲಯ
+word1: ದೇವ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ದೇವ + ಆಲಯ → ['ದೇವಾಲಯ'] | expected = ದೇವಾಲಯ
+word1: ರಾಜ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ರಾಜ + ಆಲಯ → ['ರಾಜಾಲಯ'] | expected = ರಾಜಾಲಯ
+word1: ಗ್ರಾಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಗ್ರಾಮ + ಆಲಯ → ['ಗ್ರಾಮಾಲಯ'] | expected = ಗ್ರಾಮಾಲಯ
+word1: ನಗರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ನಗರ + ಆಲಯ → ['ನಗರಾಲಯ'] | expected = ನಗರಾಲಯ
+word1: ಪಟ್ಟಣ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಟ್ಟಣ + ಆಲಯ → ['ಪಟ್ಟಣಾಲಯ'] | expected = ಪಟ್ಟಣಾಲಯ
+word1: ಹಳ್ಳಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಹಳ್ಳಿ + ಆಲಯ → ['ಹಳ್ಳಯಯಾಲಯ'] | expected = ಹಳ್ಳಿಯಾಲಯ
+word1: ಕುಡಿಕ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಕುಡಿಕ + ಆಲಯ → ['ಕುಡಿಕಾಲಯ'] | expected = ಕುಡಿಗಾಲಯ
+word1: ಹಸ್ತ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಹಸ್ತ + ಆಲಯ → ['ಹಸ್ತಾಲಯ'] | expected = ಹಸ್ತಾಲಯ
+word1: ಪಾದ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಾದ + ಆಲಯ → ['ಪಾದಾಲಯ'] | expected = ಪಾದಾಲಯ
+word1: ನೇತ್ರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ನೇತ್ರ + ಆಲಯ → ['ನೇತ್ರಾಲಯ'] | expected = ನೇತ್ರಾಲಯ
+word1: ಕರ್ಣ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಕರ್ಣ + ಆಲಯ → ['ಕರ್ಣಾಲಯ'] | expected = ಕರ್ಣಾಲಯ
+word1: ಮುಖ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮುಖ + ಆಲಯ → ['ಮುಖಾಲಯ'] | expected = ಮುಖಾಲಯ
+word1: ಹೃದಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಹೃದಯ + ಆಲಯ → ['ಹೃದಯಾಲಯ'] | expected = ಹೃದಯಾಲಯ
+word1: ಮನ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮನ + ಆಲಯ → ['ಮನಾಲಯ'] | expected = ಮನಾಲಯ
+word1: ಆತ್ಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಆತ್ಮ + ಆಲಯ → ['ಆತ್ಮಾಲಯ'] | expected = ಆತ್ಮಾಲಯ
+word1: ಪರಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪರಮ + ಆಲಯ → ['ಪರಮಾಲಯ'] | expected = ಪರಮಾಲಯ
+word1: ಸುಂದರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸುಂದರ + ಆಲಯ → ['ಸುಂದರಾಲಯ'] | expected = ಸುಂದರಾಲಯ
+word1: ಮಧುರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಧುರ + ಆಲಯ → ['ಮಧುರಾಲಯ'] | expected = ಮಧುರಾಲಯ
+word1: ಶಾಂತ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಶಾಂತ + ಆಲಯ → ['ಶಾಂತಾಲಯ'] | expected = ಶಾಂತಾಲಯ
+word1: ಪವಿತ್ರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪವಿತ್ರ + ಆಲಯ → ['ಪವಿತ್ರಾಲಯ'] | expected = ಪವಿತ್ರಾಲಯ
+word1: ಪುಣ್ಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪುಣ್ಯ + ಆಲಯ → ['ಪುಣ್ಯಾಲಯ'] | expected = ಪುಣ್ಯಾಲಯ
+word1: ದಿವ್ಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ದಿವ್ಯ + ಆಲಯ → ['ದಿವ್ಯಾಲಯ'] | expected = ದಿವ್ಯಾಲಯ
+word1: ಭವ್ಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಭವ್ಯ + ಆಲಯ → ['ಭವ್ಯಾಲಯ'] | expected = ಭವ್ಯಾಲಯ
+word1: ಮಹತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಹತ್ + ಆಲಯ → ['ಮಹದಾಲಯ'] | expected = ಮಹದಾಲಯ
+word1: ಜಗತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಜಗತ್ + ಆಲಯ → ['ಜಗದಾಲಯ'] | expected = ಜಗದಾಲಯ
+word1: ಸತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸತ್ + ಆಲಯ → ['ಸದಾಲಯ'] | expected = ಸದಾಲಯ
+word1: ವಿದ್ಯುತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವಿದ್ಯುತ್ + ಆಲಯ → ['ವಿದ್ಯುದಾಲಯ'] | expected = ವಿದ್ಯುದಾಲಯ
+word1: ಮನಸ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮನಸ್ + ಆಲಯ → ['ಮನಸಾಲಯ'] | expected = ಮನಸಾಲಯ
+word1: ತಪಸ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ತಪಸ್ + ಆಲಯ → ['ತಪಸಾಲಯ'] | expected = ತಪಸಾಲಯ
+word1: ಸರಸ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸರಸ್ + ಆಲಯ → ['ಸರಸಾಲಯ'] | expected = ಸರಸಾಲಯ
+word1: ವಾಕ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವಾಕ್ + ಆಲಯ → ['ವಾಗಾಲಯ'] | expected = ವಾಗಾಲಯ
+word1: ಛತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಛತ್ + ಆಲಯ → ['ಛದಾಲಯ'] | expected = ಛದಾಲಯ
+word1: ಅಜ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಅಜ್ + ಆಲಯ → ['ಅಜ್ಾಲಯ'] | expected = ಅಜಾಲಯ
+word1: ವಹ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವಹ್ + ಆಲಯ → ['ವಹ್ಾಲಯ'] | expected = ವಹಾಲಯ
+word1: ದಿವ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ದಿವ್ + ಆಲಯ → ['ದಿವ್ಾಲಯ'] | expected = ದಿವಾಲಯ
+word1: ರಾಜನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ರಾಜನ್ + ಆಲಯ → ['ರಾಜನಾಲಯ'] | expected = ರಾಜಾಲಯ
+word1: ವಚನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವಚನ್ + ಆಲಯ → ['ವಚನಾಲಯ'] | expected = ವಚನಾಲಯ
+word1: ಯಜಮಾನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಯಜಮಾನ್ + ಆಲಯ → ['ಯಜಮಾನಾಲಯ'] | expected = ಯಜಮಾನಾಲಯ
+word1: ಆತ್ಮನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಆತ್ಮನ್ + ಆಲಯ → ['ಆತ್ಮನಾಲಯ'] | expected = ಆತ್ಮನಾಲಯ
+word1: ಗುರು | last vowel: ಉ
+word2: ಆಲಯ | first vowel: ಆ
+ಗುರು + ಆಲಯ → ['ಗುರವವಾಲಯ'] | expected = ಗುರುವಾಲಯ
+word1: ವೀರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವೀರ + ಆಲಯ → ['ವೀರಾಲಯ'] | expected = ವೀರಾಲಯ
+word1: ಶೂರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಶೂರ + ಆಲಯ → ['ಶೂರಾಲಯ'] | expected = ಶೂರಾಲಯ
+word1: ಧೀರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಧೀರ + ಆಲಯ → ['ಧೀರಾಲಯ'] | expected = ಧೀರಾಲಯ
+word1: ವಿದ್ವಾನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ವಿದ್ವಾನ್ + ಆಲಯ → ['ವಿದ್ವಾನಾಲಯ'] | expected = ವಿದ್ವದಾಲಯ
+word1: ಪಂಡಿತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಂಡಿತ್ + ಆಲಯ → ['ಪಂಡಿದಾಲಯ'] | expected = ಪಂಡಿದಾಲಯ
+word1: ಭಕ್ತ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಕ್ತ + ಆಲಯ → ['ಭಕ್ತಾಲಯ'] | expected = ಭಕ್ತಾಲಯ
+word1: ಯೋಗಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಯೋಗಿ + ಆಲಯ → ['ಯೋಗಯಯಾಲಯ'] | expected = ಯೋಗಿಯಾಲಯ
+word1: ಸನ್ಯಾಸಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಸನ್ಯಾಸಿ + ಆಲಯ → ['ಸನ್ಯಾಸಯಯಾಲಯ'] | expected = ಸನ್ಯಾಸಿಯಾಲಯ
+word1: ತಾಪಸಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ತಾಪಸಿ + ಆಲಯ → ['ತಾಪಸಯಯಾಲಯ'] | expected = ತಾಪಸಿಯಾಲಯ
+word1: ಋಷಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಋಷಿ + ಆಲಯ → ['ಋಷಯಯಾಲಯ'] | expected = ಋಷಿಯಾಲಯ
+word1: ಮುನಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಮುನಿ + ಆಲಯ → ['ಮುನಯಯಾಲಯ'] | expected = ಮುನಿಯಾಲಯ
+word1: ಸಾಧು | last vowel: ಉ
+word2: ಆಲಯ | first vowel: ಆ
+ಸಾಧು + ಆಲಯ → ['ಸಾಧವವಾಲಯ'] | expected = ಸಾಧುವಾಲಯ
+word1: ಸಂತ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸಂತ + ಆಲಯ → ['ಸಂತಾಲಯ'] | expected = ಸಂತಾಲಯ
+word1: ಭಗವಂತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಗವಂತ್ + ಆಲಯ → ['ಭಗವಂದಾಲಯ'] | expected = ಭಗವದಾಲಯ
+word1: ಈಶ್ವರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಈಶ್ವರ + ಆಲಯ → ['ಈಶ್ವರಾಲಯ'] | expected = ಈಶ್ವರಾಲಯ
+word1: ದೇವರು | last vowel: ಉ
+word2: ಆಲಯ | first vowel: ಆ
+ದೇವರು + ಆಲಯ → ['ದೇವರವವಾಲಯ'] | expected = ದೇವರುವಾಲಯ
+word1: ಭಗವಾನ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಗವಾನ್ + ಆಲಯ → ['ಭಗವಾನಾಲಯ'] | expected = ಭಗವದಾಲಯ
+word1: ಪರಮೇಶ್ವರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪರಮೇಶ್ವರ + ಆಲಯ → ['ಪರಮೇಶ್ವರಾಲಯ'] | expected = ಪರಮೇಶ್ವರಾಲಯ
+word1: ವಿಷ್ಣು | last vowel: ಉ
+word2: ಆಲಯ | first vowel: ಆ
+ವಿಷ್ಣು + ಆಲಯ → ['ವಿಷ್ಣವವಾಲಯ'] | expected = ವಿಷ್ಣುವಾಲಯ
+word1: ಶಿವ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಶಿವ + ಆಲಯ → ['ಶಿವಾಲಯ'] | expected = ಶಿವಾಲಯ
+word1: ಬ್ರಹ್ಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಬ್ರಹ್ಮ + ಆಲಯ → ['ಬ್ರಹ್ಮಾಲಯ'] | expected = ಬ್ರಹ್ಮಾಲಯ
+word1: ಗಣೇಶ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಗಣೇಶ + ಆಲಯ → ['ಗಣೇಶಾಲಯ'] | expected = ಗಣೇಶಾಲಯ
+word1: ಸುಬ್ರಹ್ಮಣ್ಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸುಬ್ರಹ್ಮಣ್ಯ + ಆಲಯ → ['ಸುಬ್ರಹ್ಮಣ್ಯಾಲಯ'] | expected = ಸುಬ್ರಹ್ಮಣ್ಯಾಲಯ
+word1: ಹನುಮಂತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಹನುಮಂತ್ + ಆಲಯ → ['ಹನುಮಂದಾಲಯ'] | expected = ಹನುಮದಾಲಯ
+word1: ರಾಮ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ರಾಮ + ಆಲಯ → ['ರಾಮಾಲಯ'] | expected = ರಾಮಾಲಯ
+word1: ಕೃಷ್ಣ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಕೃಷ್ಣ + ಆಲಯ → ['ಕೃಷ್ಣಾಲಯ'] | expected = ಕೃಷ್ಣಾಲಯ
+word1: ಬುದ್ಧ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಬುದ್ಧ + ಆಲಯ → ['ಬುದ್ಧಾಲಯ'] | expected = ಬುದ್ಧಾಲಯ
+word1: ಮಹಾವೀರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಹಾವೀರ + ಆಲಯ → ['ಮಹಾವೀರಾಲಯ'] | expected = ಮಹಾವೀರಾಲಯ
+word1: ಗುರುನಾನಕ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಗುರುನಾನಕ್ + ಆಲಯ → ['ಗುರುನಾನಗಾಲಯ'] | expected = ಗುರುನಾನಗಾಲಯ
+word1: ಜಿನ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಜಿನ + ಆಲಯ → ['ಜಿನಾಲಯ'] | expected = ಜಿನಾಲಯ
+word1: ತೀರ್ಥಂಕರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ತೀರ್ಥಂಕರ + ಆಲಯ → ['ತೀರ್ಥಂಕರಾಲಯ'] | expected = ತೀರ್ಥಂಕರಾಲಯ
+word1: ಅವತಾರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಅವತಾರ + ಆಲಯ → ['ಅವತಾರಾಲಯ'] | expected = ಅವತಾರಾಲಯ
+word1: ಭಗವತ್ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಗವತ್ + ಆಲಯ → ['ಭಗವದಾಲಯ'] | expected = ಭಗವದಾಲಯ
+word1: ದೇವಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ದೇವಿ + ಆಲಯ → ['ದೇವಯಯಾಲಯ'] | expected = ದೇವಿಯಾಲಯ
+word1: ಲಕ್ಷ್ಮೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಲಕ್ಷ್ಮೀ + ಆಲಯ → ['ಲಕ್ಷ್ಮಯಯಾಲಯ'] | expected = ಲಕ್ಷ್ಮಿಯಾಲಯ
+word1: ಸರಸ್ವತೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಸರಸ್ವತೀ + ಆಲಯ → ['ಸರಸ್ವತಯಯಾಲಯ'] | expected = ಸರಸ್ವತ್ಯಾಲಯ
+word1: ಪಾರ್ವತೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಾರ್ವತೀ + ಆಲಯ → ['ಪಾರ್ವತಯಯಾಲಯ'] | expected = ಪಾರ್ವತ್ಯಾಲಯ
+word1: ದುರ್ಗಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ದುರ್ಗಾ + ಆಲಯ → ['ದುರ್ಗಾಲಯ', 'ದುರ್ಗಾಯಾಲಯ'] | expected = ದುರ್ಗಾಲಯ
+word1: ಕಾಳೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಕಾಳೀ + ಆಲಯ → ['ಕಾಳಯಯಾಲಯ'] | expected = ಕಾಳಿಯಾಲಯ
+word1: ಭವಾನೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಭವಾನೀ + ಆಲಯ → ['ಭವಾನಯಯಾಲಯ'] | expected = ಭವಾನ್ಯಾಲಯ
+word1: ಅಂಬಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಅಂಬಾ + ಆಲಯ → ['ಅಂಬಾಲಯ', 'ಅಂಬಾಯಾಲಯ'] | expected = ಅಂಬಾಲಯ
+word1: ಶಕ್ತಿ | last vowel: ಇ
+word2: ಆಲಯ | first vowel: ಆ
+ಶಕ್ತಿ + ಆಲಯ → ['ಶಕ್ತಯಯಾಲಯ'] | expected = ಶಕ್ತಿಯಾಲಯ
+word1: ಮಾತಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಾತಾ + ಆಲಯ → ['ಮಾತಾಯಾಲಯ', 'ಮಾತಾಲಯ'] | expected = ಮಾತಾಲಯ
+word1: ಪಿತಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಿತಾ + ಆಲಯ → ['ಪಿತಾಯಾಲಯ', 'ಪಿತಾಲಯ'] | expected = ಪಿತಾಲಯ
+word1: ಭ್ರಾತಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಭ್ರಾತಾ + ಆಲಯ → ['ಭ್ರಾತಾಯಾಲಯ', 'ಭ್ರಾತಾಲಯ'] | expected = ಭ್ರಾತಾಲಯ
+word1: ಸೋದರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸೋದರ + ಆಲಯ → ['ಸೋದರಾಲಯ'] | expected = ಸೋದರಾಲಯ
+word1: ಭಗಿನೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಗಿನೀ + ಆಲಯ → ['ಭಗಿನಯಯಾಲಯ'] | expected = ಭಗಿನ್ಯಾಲಯ
+word1: ಪುತ್ರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪುತ್ರ + ಆಲಯ → ['ಪುತ್ರಾಲಯ'] | expected = ಪುತ್ರಾಲಯ
+word1: ಪುತ್ರೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಪುತ್ರೀ + ಆಲಯ → ['ಪುತ್ರಯಯಾಲಯ'] | expected = ಪುತ್ರ್ಯಾಲಯ
+word1: ದುಹಿತಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ದುಹಿತಾ + ಆಲಯ → ['ದುಹಿತಾಯಾಲಯ', 'ದುಹಿತಾಲಯ'] | expected = ದುಹಿತಾಲಯ
+word1: ಪತ್ನೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಪತ್ನೀ + ಆಲಯ → ['ಪತ್ನಯಯಾಲಯ'] | expected = ಪತ್ನ್ಯಾಲಯ
+word1: ಭಾರ್ಯಾ | last vowel: ಆ
+word2: ಆಲಯ | first vowel: ಆ
+ಭಾರ್ಯಾ + ಆಲಯ → ['ಭಾರ್ಯಾಯಾಲಯ', 'ಭಾರ್ಯಾಲಯ'] | expected = ಭಾರ್ಯಾಲಯ
+word1: ಸಹೋದರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸಹೋದರ + ಆಲಯ → ['ಸಹೋದರಾಲಯ'] | expected = ಸಹೋದರಾಲಯ
+word1: ಮಿತ್ರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಿತ್ರ + ಆಲಯ → ['ಮಿತ್ರಾಲಯ'] | expected = ಮಿತ್ರಾಲಯ
+word1: ಸ್ನೇಹಿತ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸ್ನೇಹಿತ + ಆಲಯ → ['ಸ್ನೇಹಿತಾಲಯ'] | expected = ಸ್ನೇಹಿತಾಲಯ
+word1: ಬಂಧು | last vowel: ಉ
+word2: ಆಲಯ | first vowel: ಆ
+ಬಂಧು + ಆಲಯ → ['ಬಂಧವವಾಲಯ'] | expected = ಬಂಧುವಾಲಯ
+word1: ಸಂಬಂಧೀ | last vowel: ಈ
+word2: ಆಲಯ | first vowel: ಆ
+ಸಂಬಂಧೀ + ಆಲಯ → ['ಸಂಬಂಧಯಯಾಲಯ'] | expected = ಸಂಬಂಧ್ಯಾಲಯ
+word1: ಅಡ್ಡ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಅಡ್ಡ + ಆಲಯ → ['ಅಡ್ಡಾಲಯ'] | expected = ಅಡ್ಡಾಲಯ
+word1: ಹತ್ತಿರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಹತ್ತಿರ + ಆಲಯ → ['ಹತ್ತಿರಾಲಯ'] | expected = ಹತ್ತಿರಾಲಯ
+word1: ದೂರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ದೂರ + ಆಲಯ → ['ದೂರಾಲಯ'] | expected = ದೂರಾಲಯ
+word1: ಸಮೀಪ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಸಮೀಪ + ಆಲಯ → ['ಸಮೀಪಾಲಯ'] | expected = ಸಮೀಪಾಲಯ
+word1: ಪಾರ್ಶ್ವ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಪಾರ್ಶ್ವ + ಆಲಯ → ['ಪಾರ್ಶ್ವಾಲಯ'] | expected = ಪಾರ್ಶ್ವಾಲಯ
+word1: ಮಧ್ಯ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಮಧ್ಯ + ಆಲಯ → ['ಮಧ್ಯಾಲಯ'] | expected = ಮಧ್ಯಾಲಯ
+word1: ಕೇಂದ್ರ | last vowel: ಅ
+word2: ಆಲಯ | first vowel: ಆ
+ಕೇಂದ್ರ + ಆಲಯ → ['ಕೇಂದ್ರಾಲಯ'] | expected = ಕೇಂದ್ರಾಲಯ
+word1: ಅಂಚೆ | last vowel: ಎ
+word2: ಆಲಯ | first vowel: ಆ
+ಅಂಚೆ + ಆಲಯ → ['ಅಂಚೆಯಾಲಯ'] | expected = ಅಂಚೆಯಾಲಯ
